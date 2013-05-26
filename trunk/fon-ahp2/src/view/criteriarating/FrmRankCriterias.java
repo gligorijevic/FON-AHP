@@ -44,7 +44,7 @@ public class FrmRankCriterias extends javax.swing.JDialog {
         lblChooseNormalization = new javax.swing.JLabel();
         cmbNormalize = new javax.swing.JComboBox();
         pnlSlider = new javax.swing.JPanel();
-        jSlider1 = new javax.swing.JSlider();
+        slderWeightCriterias = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
         pnlTable = new javax.swing.JPanel();
 
@@ -111,23 +111,23 @@ public class FrmRankCriterias extends javax.swing.JDialog {
         pnlSlider.setPreferredSize(new java.awt.Dimension(581, 61));
         pnlSlider.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSlider1.setMajorTickSpacing(1);
-        jSlider1.setMaximum(8);
-        jSlider1.setMinimum(-8);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setSnapToTicks(true);
-        jSlider1.setValue(0);
-        jSlider1.addMouseListener(new java.awt.event.MouseAdapter() {
+        slderWeightCriterias.setMajorTickSpacing(1);
+        slderWeightCriterias.setMaximum(8);
+        slderWeightCriterias.setMinimum(-8);
+        slderWeightCriterias.setPaintTicks(true);
+        slderWeightCriterias.setSnapToTicks(true);
+        slderWeightCriterias.setValue(0);
+        slderWeightCriterias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jSlider1MouseReleased(evt);
+                slderWeightCriteriasMouseReleased(evt);
             }
         });
-        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+        slderWeightCriterias.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider1StateChanged(evt);
+                slderWeightCriteriasStateChanged(evt);
             }
         });
-        pnlSlider.add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 7, 510, -1));
+        pnlSlider.add(slderWeightCriterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 7, 510, -1));
 
         jLabel1.setText("     9        8        7         6        5         4        3        2        1         2        3         4        5        6         7        8        9");
         pnlSlider.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 540, -1));
@@ -147,7 +147,7 @@ public class FrmRankCriterias extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCalculateActionPerformed
 
-    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+    private void slderWeightCriteriasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slderWeightCriteriasStateChanged
 //        try {
 //            TblModelCriterias tblModel = (TblModelCriterias) ((PnlCriteriasMarks) pnlTable).getTblCriteriasMarks().getModel();
 //            int columnIndex = ((PnlCriteriasMarks) pnlTable).getTblCriteriasMarks().getSelectedColumn();
@@ -160,9 +160,9 @@ public class FrmRankCriterias extends javax.swing.JDialog {
 //        } catch (MarkNotInSatScaleException ex) {
 //            Logger.getLogger(FrmRankCriterias.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-    }//GEN-LAST:event_jSlider1StateChanged
+    }//GEN-LAST:event_slderWeightCriteriasStateChanged
 
-    private void jSlider1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseReleased
+    private void slderWeightCriteriasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slderWeightCriteriasMouseReleased
         if (((PnlCriteriasMarks) pnlTable).getTblCriteriasMarks().getSelectedColumn() > -1
                 && ((PnlCriteriasMarks) pnlTable).getTblCriteriasMarks().getSelectedRow() > -1) {
             try {
@@ -170,32 +170,33 @@ public class FrmRankCriterias extends javax.swing.JDialog {
                 int columnIndex = ((PnlCriteriasMarks) pnlTable).getTblCriteriasMarks().getSelectedColumn();
                 int rowIndex = ((PnlCriteriasMarks) pnlTable).getTblCriteriasMarks().getSelectedRow();
                 System.out.println("Selected row: " + rowIndex + " ,select column: " + columnIndex);
-                if (jSlider1.getValue() >= 0) {
+                if (slderWeightCriterias.getValue() >= 0) {
                     ACStorage.getInstance().getGoal().addCriteriaWeight(
                             ACStorage.getInstance().getGoal().getListCriteria().get(columnIndex - 1),
                             ACStorage.getInstance().getGoal().getListCriteria().get(rowIndex),
-                            Math.abs(jSlider1.getValue()) + 1);
+                            Math.abs(slderWeightCriterias.getValue()) + 1);
                     ACStorage.getInstance().getGoal().addCriteriaWeight(
                             ACStorage.getInstance().getGoal().getListCriteria().get(rowIndex),
                             ACStorage.getInstance().getGoal().getListCriteria().get(columnIndex - 1),
-                            (1.0 / (Math.abs(jSlider1.getValue()) + 1)));
+                            (1.0 / (Math.abs(slderWeightCriterias.getValue()) + 1)));
                     tblModel.fireTableDataChanged();
                 } else {
                     ACStorage.getInstance().getGoal().addCriteriaWeight(
                             ACStorage.getInstance().getGoal().getListCriteria().get(columnIndex - 1),
                             ACStorage.getInstance().getGoal().getListCriteria().get(rowIndex),
-                            (1.0 / (Math.abs(jSlider1.getValue()) + 1)));
+                            (1.0 / (Math.abs(slderWeightCriterias.getValue()) + 1)));
                     ACStorage.getInstance().getGoal().addCriteriaWeight(
                             ACStorage.getInstance().getGoal().getListCriteria().get(rowIndex),
                             ACStorage.getInstance().getGoal().getListCriteria().get(columnIndex - 1),
-                            Math.abs(jSlider1.getValue()) + 1);
+                            Math.abs(slderWeightCriterias.getValue()) + 1);
                     tblModel.fireTableDataChanged();
                 }
             } catch (MarkNotInSatScaleException ex) {
                 Logger.getLogger(FrmRankCriterias.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_jSlider1MouseReleased
+        slderWeightCriterias.setValue(0);
+    }//GEN-LAST:event_slderWeightCriteriasMouseReleased
 
     /**
      * @param args the command line arguments
@@ -243,11 +244,11 @@ public class FrmRankCriterias extends javax.swing.JDialog {
     private javax.swing.JButton btnNormalize;
     private javax.swing.JComboBox cmbNormalize;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JLabel lblChooseNormalization;
     private javax.swing.JPanel pnlOptions;
     private javax.swing.JPanel pnlSlider;
     private javax.swing.JPanel pnlTable;
+    private javax.swing.JSlider slderWeightCriterias;
     // End of variables declaration//GEN-END:variables
 
     /**
