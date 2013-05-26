@@ -51,7 +51,7 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
         btnAverageValues = new javax.swing.JButton();
         pnlTable = new javax.swing.JPanel();
         pnlSlider = new javax.swing.JPanel();
-        jSlider1 = new javax.swing.JSlider();
+        slderMarkAlternatives = new javax.swing.JSlider();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -142,25 +142,25 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
         pnlSlider.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlSlider.setName(""); // NOI18N
 
-        jSlider1.setMajorTickSpacing(1);
-        jSlider1.setMaximum(8);
-        jSlider1.setMinimum(-8);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setSnapToTicks(true);
-        jSlider1.setValue(0);
-        jSlider1.addMouseListener(new java.awt.event.MouseAdapter() {
+        slderMarkAlternatives.setMajorTickSpacing(1);
+        slderMarkAlternatives.setMaximum(8);
+        slderMarkAlternatives.setMinimum(-8);
+        slderMarkAlternatives.setPaintTicks(true);
+        slderMarkAlternatives.setSnapToTicks(true);
+        slderMarkAlternatives.setValue(0);
+        slderMarkAlternatives.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jSlider1MouseReleased(evt);
+                slderMarkAlternativesMouseReleased(evt);
             }
         });
-        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+        slderMarkAlternatives.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider1StateChanged(evt);
+                slderMarkAlternativesStateChanged(evt);
             }
         });
-        jSlider1.addKeyListener(new java.awt.event.KeyAdapter() {
+        slderMarkAlternatives.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jSlider1KeyReleased(evt);
+                slderMarkAlternativesKeyReleased(evt);
             }
         });
 
@@ -173,7 +173,7 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
             .addGroup(pnlSliderLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(pnlSliderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(slderMarkAlternatives, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
@@ -181,7 +181,7 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
             pnlSliderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSliderLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(slderMarkAlternatives, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -245,7 +245,7 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
         checkButtons();
     }//GEN-LAST:event_btnNextActionPerformed
 
-    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+    private void slderMarkAlternativesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slderMarkAlternativesStateChanged
 //        System.out.println(jSlider1.getValue());
 //        try {
 //            TblModelAlternatives tblModel = (TblModelAlternatives) ((PnlAlternativeMarks) pnlTable).getTblAlternativeMarks().getModel();
@@ -258,13 +258,13 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
 //        } catch (MarkNotInSatScaleException ex) {
 //            Logger.getLogger(FrmRankAlternativesByCriteria.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-    }//GEN-LAST:event_jSlider1StateChanged
+    }//GEN-LAST:event_slderMarkAlternativesStateChanged
 
-    private void jSlider1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSlider1KeyReleased
-    }//GEN-LAST:event_jSlider1KeyReleased
+    private void slderMarkAlternativesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_slderMarkAlternativesKeyReleased
+    }//GEN-LAST:event_slderMarkAlternativesKeyReleased
 
-    private void jSlider1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseReleased
-        System.out.println(jSlider1.getValue());
+    private void slderMarkAlternativesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slderMarkAlternativesMouseReleased
+        System.out.println(slderMarkAlternatives.getValue());
         if (((PnlAlternativeMarks) pnlTable).getTblAlternativeMarks().getSelectedColumn() > -1
                 && ((PnlAlternativeMarks) pnlTable).getTblAlternativeMarks().getSelectedRow() > -1) {
             try {
@@ -272,26 +272,26 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
                 int columnIndex = ((PnlAlternativeMarks) pnlTable).getTblAlternativeMarks().getSelectedColumn();
                 int rowIndex = ((PnlAlternativeMarks) pnlTable).getTblAlternativeMarks().getSelectedRow();
                 System.out.println("selected column index: " + columnIndex + " selected row index: " + rowIndex);
-                if (jSlider1.getValue() >= 0) {
+                if (slderMarkAlternatives.getValue() >= 0) {
                     ACStorage.getInstance().getGoal().getListCriteria().get(criteriaCounter).insertMark(
                             ACStorage.getInstance().getGoal().getListAlternative().get(columnIndex - 1),
                             ACStorage.getInstance().getGoal().getListAlternative().get(rowIndex),
-                            Math.abs(jSlider1.getValue()) + 1);
+                            Math.abs(slderMarkAlternatives.getValue()) + 1);
                     ACStorage.getInstance().getGoal().getListCriteria().get(criteriaCounter).insertMark(
                             ACStorage.getInstance().getGoal().getListAlternative().get(rowIndex),
                             ACStorage.getInstance().getGoal().getListAlternative().get(columnIndex - 1),
-                            1.0 / (Math.abs(jSlider1.getValue()) + 1));
+                            1.0 / (Math.abs(slderMarkAlternatives.getValue()) + 1));
 //            treba li da se uzpe allAlternativeRanks preko Criteria umesto listAlternative??
                     tblModel.fireTableDataChanged();
                 } else {
                     ACStorage.getInstance().getGoal().getListCriteria().get(criteriaCounter).insertMark(
                             ACStorage.getInstance().getGoal().getListAlternative().get(columnIndex - 1),
                             ACStorage.getInstance().getGoal().getListAlternative().get(rowIndex),
-                            1.0 / (Math.abs(jSlider1.getValue()) + 1));
+                            1.0 / (Math.abs(slderMarkAlternatives.getValue()) + 1));
                     ACStorage.getInstance().getGoal().getListCriteria().get(criteriaCounter).insertMark(
                             ACStorage.getInstance().getGoal().getListAlternative().get(rowIndex),
                             ACStorage.getInstance().getGoal().getListAlternative().get(columnIndex - 1),
-                            Math.abs(jSlider1.getValue()) + 1);
+                            Math.abs(slderMarkAlternatives.getValue()) + 1);
                     tblModel.fireTableDataChanged();
                 }
             } catch (MarkNotInSatScaleException ex) {
@@ -299,7 +299,8 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
 
             }
         }
-    }//GEN-LAST:event_jSlider1MouseReleased
+        slderMarkAlternatives.setValue(0);
+    }//GEN-LAST:event_slderMarkAlternativesMouseReleased
 
     private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
         --criteriaCounter;
@@ -368,10 +369,10 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
     private javax.swing.JComboBox cmbNormalize;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JPanel pnlOptions;
     private javax.swing.JPanel pnlSlider;
     private javax.swing.JPanel pnlTable;
+    private javax.swing.JSlider slderMarkAlternatives;
     // End of variables declaration//GEN-END:variables
 
     /**
