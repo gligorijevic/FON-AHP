@@ -14,6 +14,7 @@ import view.alternativesrating.PnlAlternativeMarks;
 import view.alternativesrating.TblModelAlternatives;
 import view.criteriarating.PnlCriteriasMarks;
 import view.criteriarating.TblModelCriterias;
+import view.finalresults.FrmFinalResults;
 import view.write.csv.FrmWriteCsv;
 
 /**
@@ -166,6 +167,11 @@ public class FrmMain extends javax.swing.JFrame {
         jMenu1.setText("Finalize results");
 
         miOpenFinalResults.setText("Open final results");
+        miOpenFinalResults.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miOpenFinalResultsActionPerformed(evt);
+            }
+        });
         jMenu1.add(miOpenFinalResults);
 
         jMenuBar1.add(jMenu1);
@@ -247,6 +253,11 @@ public class FrmMain extends javax.swing.JFrame {
         FrmWriteCsv fwc = new FrmWriteCsv(this, true);
         fwc.setVisible(true);
     }//GEN-LAST:event_miExportCsvActionPerformed
+
+    private void miOpenFinalResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miOpenFinalResultsActionPerformed
+        FrmFinalResults ffr = new FrmFinalResults(this, true);
+        ffr.setVisible(true);
+    }//GEN-LAST:event_miOpenFinalResultsActionPerformed
 
     /**
      * @param args the command line arguments

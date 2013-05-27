@@ -28,7 +28,7 @@ public class Criteria {
     private Map normalizedMarks;
     @Deprecated
     private Map altermativeGrades;
-    private LinkedList<Double> averageValues;
+    private List<Double> averageValues;
 
     public Criteria() {
         marks = new HashMap();
@@ -46,6 +46,7 @@ public class Criteria {
         normalizedMarks = new HashMap();
         altermativeGrades = new HashMap();
         allAlternativeRanks = new ArrayList<>();
+        averageValues = new ArrayList<>();
     }
 
     /**
@@ -202,7 +203,7 @@ public class Criteria {
     /**
      * @param averageValues the averageValues to set
      */
-    public void setAverageValues(LinkedList<Double> averageValues) {
+    public void setAverageValues(List<Double> averageValues) {
         this.averageValues = averageValues;
     }
 }

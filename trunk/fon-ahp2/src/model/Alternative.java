@@ -18,6 +18,7 @@ public class Alternative {
     private String name;
     private int id;
     private String description;
+    private double mark;
     @Deprecated
     private Map marks;
     @Deprecated
@@ -203,5 +204,19 @@ public class Alternative {
         //         if(key.eq)
         //if(keySet.contains()) dodacemo kasnije, treba da se uporedjuje 0,0
         //iz getValueAt sa keySet i potom da se mapa prosledi u mapu koja odgovoara kljucu iz KeySet
+    }
+
+    /**
+     * @return the mark
+     */
+    public double getMark() {
+        return mark;
+    }
+
+    /**
+     * @param mark the mark to set
+     */
+    public void setMark(double mark) {
+        this.mark = mark;
     }
 }
