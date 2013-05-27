@@ -42,6 +42,12 @@ public class FrmWriteCsv extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        chooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooserActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Filename: ");
 
         jButton1.setText("Export Csv");
@@ -104,6 +110,10 @@ public class FrmWriteCsv extends javax.swing.JDialog {
             Logger.getLogger(FrmWriteCsv.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void chooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chooserActionPerformed
 
     /**
      * @param args the command line arguments
