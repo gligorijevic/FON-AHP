@@ -9,5 +9,4 @@ package logic;
  * @author mzdv
  */
 public class PutMissingAlternative {
-    
 }

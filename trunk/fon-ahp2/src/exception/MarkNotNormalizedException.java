@@ -13,5 +13,4 @@ public class MarkNotNormalizedException extends Exception {
     public MarkNotNormalizedException(String message) {
         super(message);
     }
-    
 }

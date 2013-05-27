@@ -12,8 +12,8 @@ import model.Goal;
  * @author Djordje Gligorijevic
  */
 public interface Normalizer {
-    
+
     public void normalize(Goal goal);
+
     public void normalize(Criteria criteria);
-    
 }

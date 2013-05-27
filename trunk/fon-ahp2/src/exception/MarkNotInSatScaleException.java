@@ -13,5 +13,4 @@ public class MarkNotInSatScaleException extends Exception {
     public MarkNotInSatScaleException(String message) {
         super(message);
     }
-    
 }

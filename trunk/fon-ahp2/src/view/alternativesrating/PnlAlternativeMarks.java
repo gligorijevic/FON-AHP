@@ -12,7 +12,6 @@ import view.renderer.MyRenderer;
  * @author Ivan
  */
 public class PnlAlternativeMarks extends javax.swing.JPanel {
-    
 
     /**
      * Creates new form PnlAlternativeMarks
@@ -22,7 +21,6 @@ public class PnlAlternativeMarks extends javax.swing.JPanel {
         tblAlternativeMarks.setDefaultRenderer(Object.class, new MyRenderer());
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,7 +72,4 @@ public class PnlAlternativeMarks extends javax.swing.JPanel {
     public void setTblAlternativeMarks(javax.swing.JTable tblAlternativeMarks) {
         this.tblAlternativeMarks = tblAlternativeMarks;
     }
-
-    
-    
 }

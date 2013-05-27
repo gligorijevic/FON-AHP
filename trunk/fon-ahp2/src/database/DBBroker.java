@@ -9,14 +9,14 @@ package database;
  * @author Djordje Gligorijevic
  */
 public class DBBroker {
-    
+
     private DBBroker() {
     }
-    
+
     public static DBBroker getInstance() {
         return DBBrokerHolder.INSTANCE;
     }
-    
+
     private static class DBBrokerHolder {
 
         private static final DBBroker INSTANCE = new DBBroker();
