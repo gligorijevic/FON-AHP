@@ -15,7 +15,9 @@ import model.Alternative;
  */
 public class FrmAddAlternative extends javax.swing.JDialog {
     //primer druge implementacije MVC patterna
+
     private ControllerAlternative controller;
+
     /**
      * Creates new form FrmAddAlternative
      */
@@ -177,8 +179,6 @@ public class FrmAddAlternative extends javax.swing.JDialog {
             }
         });
     }
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonCancel;

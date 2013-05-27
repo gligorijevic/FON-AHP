@@ -143,10 +143,10 @@ public class Goal {
                     getCriteriaWeights().add(newCriteriaWeight);
                 } else {
                     for (int i = 0; i < getCriteriaWeights().size(); i++) {
-                       if (getCriteriaWeights().get(i).getFirstCriteria().equals(firstCriteria) 
-                               && getCriteriaWeights().get(i).getSecondCriteria().equals(secondCriteria)) {
+                        if (getCriteriaWeights().get(i).getFirstCriteria().equals(firstCriteria)
+                                && getCriteriaWeights().get(i).getSecondCriteria().equals(secondCriteria)) {
                             getCriteriaWeights().get(i).setMark(weight);
-                        } 
+                        }
                     }
 //                    for (CriteriaWeight criteriaWeight : getCriteriaWeights()) {
 //                        if (criteriaWeight.getFirstCriteria().equals(firstCriteria) && criteriaWeight.getSecondCriteria().equals(secondCriteria)) {
@@ -166,7 +166,7 @@ public class Goal {
                     getCriteriaWeights().add(newCriteriaWeight);
                 } else {
                     for (int i = 0; i < getCriteriaWeights().size(); i++) {
-                        if (getCriteriaWeights().get(i).getFirstCriteria().equals(firstCriteria) 
+                        if (getCriteriaWeights().get(i).getFirstCriteria().equals(firstCriteria)
                                 && getCriteriaWeights().get(i).getSecondCriteria().equals(secondCriteria)) {
                             getCriteriaWeights().get(i).setMark(weight);
                         }

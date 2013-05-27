@@ -19,7 +19,7 @@ public class AverageAlternatives {
     public double average() {
         int mapSize;
         HashMap<Alternative, Double> weights = new HashMap<>();
-        
+
 
 
         for (int i = 0; i < ACStorage.getInstance().getAlternatives().size(); i++) {
@@ -30,15 +30,14 @@ public class AverageAlternatives {
                     Alternative key = (Alternative) it.next();
                     Double value = (Double) ACStorage.getInstance().getAlternatives().get(0).getNormalizedMarks().get(key);
                     weights.put(key, value);
-                     
+
                 }
-            }else{
-                
+            } else {
             }
 
 //            if(ACStorage.getInstance().getAlternatives().get(i);
         }
-        
+
         return 1; /// TO DO OVO OBRISI OBAVEZNO !!!!
     }
 }

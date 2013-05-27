@@ -19,7 +19,7 @@ import model.Goal;
  * @author Vlada
  */
 public class ACStorage {
-    
+
     private static ACStorage instance;
     private Goal goal;
     @Deprecated
@@ -28,33 +28,33 @@ public class ACStorage {
     private List<Criteria> criterias;
     @Deprecated
     private List<List<Double>> criteriaMatrix = new ArrayList<>();
-    
+
     private ACStorage() {
         alternatives = new ArrayList<>();
         criterias = new ArrayList<>();
     }
-    
+
     public static synchronized ACStorage getInstance() {
         if (instance == null) {
             instance = new ACStorage();
         }
         return instance;
     }
-    
+
     public void addCriteria(Criteria criteria) {
         if (criteria != null) {
             goal.getListCriteria().add(criteria);
         }
 //        refreshMapsCriteria();
     }
-    
+
     public void addAlternative(Alternative alternative) {
         if (alternative != null) {
             goal.getListAlternative().add(alternative);
         }
 //        refreshMapsAlternative();
     }
-    
+
     public void removeAlternative(Alternative a) {
         if (goal.getListAlternative().contains(a)) {
             goal.getListAlternative().remove(a);
@@ -106,7 +106,7 @@ public class ACStorage {
     public void setGoal(Goal goal) {
         this.goal = goal;
     }
-    
+
     public void removeCriteria(Criteria criteria) {
         goal.getListCriteria().remove(criteria);
 //        criterias.remove(criteria);
@@ -140,7 +140,7 @@ public class ACStorage {
             alternatives.get(i).setMarks(map);
         }
     }
-    
+
     @Deprecated
     public void refreshMapsCriteria() {
         for (int i = 0; i < criterias.size(); i++) {
@@ -162,7 +162,7 @@ public class ACStorage {
             criterias.get(i).setMarks(map);
         }
     }
-    
+
     public void refreshData() {
         for (int i = 0; i < goal.getListCriteria().size(); i++) {
             for (int j = 0; j < goal.getListCriteria().size(); j++) {
@@ -172,7 +172,7 @@ public class ACStorage {
                     }
                 }
             }
-            
+
         }
         for (int i = 0; i < goal.getListCriteria().size(); i++) {
             for (int j = 0; j < goal.getListAlternative().size(); j++) {
