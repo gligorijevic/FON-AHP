@@ -14,6 +14,7 @@ import view.alternativesrating.PnlAlternativeMarks;
 import view.alternativesrating.TblModelAlternatives;
 import view.criteriarating.PnlCriteriasMarks;
 import view.criteriarating.TblModelCriterias;
+import view.write.csv.FrmWriteCsv;
 
 /**
  *
@@ -55,6 +56,12 @@ public class FrmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlProject = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        treeViewProject = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAViewAlternatives = new javax.swing.JTextArea();
+        jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAdd = new javax.swing.JMenu();
         miAddGoal = new javax.swing.JMenuItem();
@@ -63,10 +70,52 @@ public class FrmMain extends javax.swing.JFrame {
         jMenuMarks = new javax.swing.JMenu();
         AlternativeByCriteria = new javax.swing.JMenuItem();
         CriteriaWeights = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        miOpenFinalResults = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        miExportCsv = new javax.swing.JMenuItem();
+        exportTxt = new javax.swing.JMenuItem();
+        miExportHtml = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Analytic Hierarchy Process (AHP)");
+        setBounds(new java.awt.Rectangle(100, 60, 0, 0));
 
-        jMenuAdd.setText(" Add");
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        treeViewProject.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        treeViewProject.setAutoscrolls(true);
+        treeViewProject.setDoubleBuffered(true);
+        jScrollPane1.setViewportView(treeViewProject);
+
+        txtAViewAlternatives.setColumns(20);
+        txtAViewAlternatives.setLineWrap(true);
+        txtAViewAlternatives.setRows(5);
+        txtAViewAlternatives.setBorder(javax.swing.BorderFactory.createTitledBorder("Alternatives"));
+        jScrollPane2.setViewportView(txtAViewAlternatives);
+
+        javax.swing.GroupLayout pnlProjectLayout = new javax.swing.GroupLayout(pnlProject);
+        pnlProject.setLayout(pnlProjectLayout);
+        pnlProjectLayout.setHorizontalGroup(
+            pnlProjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlProjectLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        pnlProjectLayout.setVerticalGroup(
+            pnlProjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlProjectLayout.createSequentialGroup()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(pnlProjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                    .addGroup(pnlProjectLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+
+        jMenuAdd.setText("AHP Project");
 
         miAddGoal.setText("Add goal");
         miAddGoal.addActionListener(new java.awt.event.ActionListener() {
@@ -94,9 +143,9 @@ public class FrmMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuAdd);
 
-        jMenuMarks.setText("Marks");
+        jMenuMarks.setText("Marks and Weights");
 
-        AlternativeByCriteria.setText("Alternative by criteria");
+        AlternativeByCriteria.setText("Rank Alternatives by Criterias");
         AlternativeByCriteria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AlternativeByCriteriaActionPerformed(evt);
@@ -104,7 +153,7 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jMenuMarks.add(AlternativeByCriteria);
 
-        CriteriaWeights.setText("Criteria weights");
+        CriteriaWeights.setText(" Rank Criterias");
         CriteriaWeights.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CriteriaWeightsActionPerformed(evt);
@@ -114,17 +163,42 @@ public class FrmMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuMarks);
 
+        jMenu1.setText("Finalize results");
+
+        miOpenFinalResults.setText("Open final results");
+        jMenu1.add(miOpenFinalResults);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText(" Export");
+
+        miExportCsv.setText("Export as CSV");
+        miExportCsv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miExportCsvActionPerformed(evt);
+            }
+        });
+        jMenu2.add(miExportCsv);
+
+        exportTxt.setText("Export as TXT");
+        jMenu2.add(exportTxt);
+
+        miExportHtml.setText("Export as HTML");
+        jMenu2.add(miExportHtml);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(pnlProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
+            .addComponent(pnlProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -169,6 +243,11 @@ public class FrmMain extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CriteriaWeightsActionPerformed
 
+    private void miExportCsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miExportCsvActionPerformed
+        FrmWriteCsv fwc = new FrmWriteCsv(this, true);
+        fwc.setVisible(true);
+    }//GEN-LAST:event_miExportCsvActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -206,11 +285,65 @@ public class FrmMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AlternativeByCriteria;
     private javax.swing.JMenuItem CriteriaWeights;
+    private javax.swing.JMenuItem exportTxt;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenuAdd;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuMarks;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenuItem miAddAlternative;
     private javax.swing.JMenuItem miAddCriteria;
     private javax.swing.JMenuItem miAddGoal;
+    private javax.swing.JMenuItem miExportCsv;
+    private javax.swing.JMenuItem miExportHtml;
+    private javax.swing.JMenuItem miOpenFinalResults;
+    private javax.swing.JPanel pnlProject;
+    private javax.swing.JTree treeViewProject;
+    private javax.swing.JTextArea txtAViewAlternatives;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the pnlProject
+     */
+    public javax.swing.JPanel getPnlProject() {
+        return pnlProject;
+    }
+
+    /**
+     * @param pnlProject the pnlProject to set
+     */
+    public void setPnlProject(javax.swing.JPanel pnlProject) {
+        this.pnlProject = pnlProject;
+    }
+
+    /**
+     * @return the treeViewProject
+     */
+    public javax.swing.JTree getTreeViewProject() {
+        return treeViewProject;
+    }
+
+    /**
+     * @param treeViewProject the treeViewProject to set
+     */
+    public void setTreeViewProject(javax.swing.JTree treeViewProject) {
+        this.treeViewProject = treeViewProject;
+    }
+
+    /**
+     * @return the txtAViewAlternatives
+     */
+    public javax.swing.JTextArea getTxtAViewAlternatives() {
+        return txtAViewAlternatives;
+    }
+
+    /**
+     * @param txtAViewAlternatives the txtAViewAlternatives to set
+     */
+    public void setTxtAViewAlternatives(javax.swing.JTextArea txtAViewAlternatives) {
+        this.txtAViewAlternatives = txtAViewAlternatives;
+    }
 }

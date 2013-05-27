@@ -35,7 +35,7 @@ public class ControllerAlternative {
             JOptionPane.showMessageDialog(null, "You must enter Name and Description");
         } else {
             Alternative a = new Alternative(alternativeName, alternativeDescription);
-            if (ACStorage.getInstance().getAlternatives().contains(a)) {
+            if (ACStorage.getInstance().getGoal().getListAlternative().contains(a)) {
                 JOptionPane.showMessageDialog(null, "The alternative already exists.");
             } else {
                 ACStorage.getInstance().addAlternative(a);

@@ -8,11 +8,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import model.Alternative;
 import model.AlternativeRanks;
 import model.Criteria;
 import model.CriteriaWeight;
 import model.Goal;
+import view.main.FrmMain;
 
 /**
  *
@@ -20,6 +24,7 @@ import model.Goal;
  */
 public class ACStorage {
 
+    private FrmMain glavnaForma;
     private static ACStorage instance;
     private Goal goal;
     @Deprecated
@@ -28,6 +33,7 @@ public class ACStorage {
     private List<Criteria> criterias;
     @Deprecated
     private List<List<Double>> criteriaMatrix = new ArrayList<>();
+    DefaultMutableTreeNode project;
 
     private ACStorage() {
         alternatives = new ArrayList<>();
@@ -46,6 +52,8 @@ public class ACStorage {
             goal.getListCriteria().add(criteria);
         }
 //        refreshMapsCriteria();
+        refreshData();
+        refreshProjectPreview();
     }
 
     public void addAlternative(Alternative alternative) {
@@ -53,6 +61,8 @@ public class ACStorage {
             goal.getListAlternative().add(alternative);
         }
 //        refreshMapsAlternative();
+        refreshData();
+        refreshProjectPreview();
     }
 
     public void removeAlternative(Alternative a) {
@@ -186,5 +196,35 @@ public class ACStorage {
                 }
             }
         }
+    }
+
+    public void refreshProjectPreview() {
+        project = new DefaultMutableTreeNode(goal.getName());
+        for (int i = 0; i < goal.getListCriteria().size(); i++) {
+            DefaultMutableTreeNode child = new DefaultMutableTreeNode(goal.getListCriteria().get(i).getName());
+            project.add(child);
+        }
+        DefaultTreeModel dtm = new DefaultTreeModel(project);
+        glavnaForma.getTreeViewProject().setModel(dtm);
+        
+        StringBuilder txtArea = new StringBuilder();
+        for (int i = 0; i < goal.getListAlternative().size(); i++) {
+            txtArea.append(goal.getListAlternative().get(i).getName()).append(" - ").append(goal.getListAlternative().get(i).getDescription()).append("\n");
+        }
+        glavnaForma.getTxtAViewAlternatives().setText(txtArea.toString());
+    }
+
+    /**
+     * @return the glavnaForma
+     */
+    public FrmMain getGlavnaForma() {
+        return glavnaForma;
+    }
+
+    /**
+     * @param glavnaForma the glavnaForma to set
+     */
+    public void setGlavnaForma(FrmMain glavnaForma) {
+        this.glavnaForma = glavnaForma;
     }
 }
