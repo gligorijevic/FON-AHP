@@ -33,7 +33,5 @@ public class ControllerAlternativeRanks {
 
     public void normalize(String normalizer, Criteria criteria) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         ((Normalizer) Class.forName("logic." + normalizer).newInstance()).normalize(criteria);
-
-
     }
 }

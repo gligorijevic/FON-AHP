@@ -25,7 +25,8 @@ public class Goal {
     private List<Criteria> listCriteria;
     private List<Alternative> listAlternative;
     private List<CriteriaWeight> criteriaWeights;
-
+    private List<Double> criteriaPonders;
+    
     public Goal() {
         listCriteria = new ArrayList<>();
         listAlternative = new ArrayList<>();
@@ -219,4 +220,20 @@ public class Goal {
     public void setCriteriaWeights(List<CriteriaWeight> criteriaWeights) {
         this.criteriaWeights = criteriaWeights;
     }
+
+    /**
+     * @return the criteriaPonders
+     */
+    public List<Double> getCriteriaPonders() {
+        return criteriaPonders;
+    }
+
+    /**
+     * @param criteriaPonders the criteriaPonders to set
+     */
+    public void setCriteriaPonders(List<Double> criteriaPonders) {
+        this.criteriaPonders = criteriaPonders;
+    }
+    
+    
 }
