@@ -57,67 +57,133 @@ public class CsvWriter {
         pw.print("\n");
         pw.print("\n");
 
-        for (int i = 0; i < ACStorage.getInstance().getCriterias().size(); i++) {
+        for (int i = 0; i < ACStorage.getInstance().getGoal().getListCriteria().size(); i++) {
 
-            pw.print(ACStorage.getInstance().getCriterias().get(i).getName());
+            pw.print(ACStorage.getInstance().getGoal().getListCriteria().get(i).getName());
+            pw.print(",");
+            pw.print(ACStorage.getInstance().getGoal().getListCriteria().get(i).getDescription());
             pw.print("\n");
 
         }
         pw.print("\n");
         pw.print("\n");
 
-        pw.print("Alternative marks");
+
+        for (int x = 0; x < ACStorage.getInstance().getGoal().getListCriteria().size(); x++) {
+
+            pw.print("\n");
+            pw.print("\n");
+            pw.print("Alternative marks");
+            pw.print("\n");
+            pw.print("\n");
+
+            pw.print(ACStorage.getInstance().getGoal().getListCriteria().get(x).getName());
+
+            pw.print(",");
+            for (int i = 0; i < ACStorage.getInstance().getGoal().getListAlternative().size(); i++) {
+
+                pw.print(ACStorage.getInstance().getGoal().getListAlternative().get(i).getName());
+                pw.print(",");
+            }
+
+
+            pw.print("\n");
+            for (int i = 0; i < ACStorage.getInstance().getGoal().getListAlternative().size(); i++) {
+
+                pw.print(ACStorage.getInstance().getGoal().getListAlternative().get(i).getName());
+                pw.print(",");
+                for (int j = 0; j < ACStorage.getInstance().getGoal().getListAlternative().size(); j++) {
+                    pw.print(ACStorage.getInstance().getGoal().getListCriteria().get(x).getAlternativeRankInList(ACStorage.getInstance().getGoal().getListAlternative().get(j), ACStorage.getInstance().getGoal().getListAlternative().get(i)).getMark());
+                    pw.print(",");
+
+
+                }
+                pw.print("\n");
+            }
+
+
+            pw.print("\n");
+            pw.print("\n");
+
+            pw.print("Alternative normalized marks");
+            pw.print("\n");
+            pw.print("\n");
+
+            pw.print(ACStorage.getInstance().getGoal().getListCriteria().get(x).getName());
+
+            pw.print(",");
+            for (int i = 0; i < ACStorage.getInstance().getGoal().getListAlternative().size(); i++) {
+                pw.print(ACStorage.getInstance().getGoal().getListAlternative().get(i).getName());
+                pw.print(",");
+            }
+            pw.print("\n");
+            for (int i = 0; i < ACStorage.getInstance().getGoal().getListAlternative().size(); i++) {
+                pw.print(ACStorage.getInstance().getGoal().getListAlternative().get(i).getName());
+                pw.print(",");
+                for (int j = 0; j < ACStorage.getInstance().getGoal().getListAlternative().size(); j++) {
+                    pw.print(ACStorage.getInstance().getGoal().getListCriteria().get(x).getAlternativeRankInList(ACStorage.getInstance().getGoal().getListAlternative().get(j), ACStorage.getInstance().getGoal().getListAlternative().get(i)).getNormalizedMark());
+                    pw.print(",");
+
+
+                }
+                pw.print("\n");
+            }
+
+
+            pw.print("\n");
+            pw.print("\n");
+
+
+
+        }
+
+        pw.print("Criteria marks");
         pw.print("\n");
         pw.print("\n");
 
+        pw.print("Criterias");
         pw.print(",");
-        for (int i = 0; i < ACStorage.getInstance().getAlternatives().size(); i++) {
-
-            pw.print(ACStorage.getInstance().getAlternatives().get(i).getName());
+        for (int i = 0; i < ACStorage.getInstance().getGoal().getListCriteria().size(); i++) {
+            pw.print(ACStorage.getInstance().getGoal().getListCriteria().get(i).getName());
             pw.print(",");
         }
 
         pw.print("\n");
-        for (int i = 0; i < ACStorage.getInstance().getAlternatives().size(); i++) {
-
-            pw.print(ACStorage.getInstance().getAlternatives().get(i).getName());
+        for (int i = 0; i < ACStorage.getInstance().getGoal().getListCriteria().size(); i++) {
+            pw.print(ACStorage.getInstance().getGoal().getListCriteria().get(i).getName());
+            pw.print(",");
+            for (int j = 0; j < ACStorage.getInstance().getGoal().getListCriteria().size(); j++) {
+                pw.print(ACStorage.getInstance().getGoal().getCriteriaWeightInList(ACStorage.getInstance().getGoal().getListCriteria().get(j), ACStorage.getInstance().getGoal().getListCriteria().get(i)).getMark());
+                pw.print(",");
+            }
             pw.print("\n");
-        }
-
-//        for (int i = 0; i < ACStorage.getInstance().getGoal().getListAlternative().size(); i++) {
-//            
-//        }
-
-
-        pw.print("\n");
-        pw.print("\n");
-
-        pw.print("Alternative normalized marks");
-        pw.print("\n");
-        pw.print("\n");
-
-        for (int i = 0; i < 10; i++) {
-        }
-        pw.print("\n");
-        pw.print("\n");
-
-
-        pw.print("Criteria marks");
-        pw.print("\n");
-
-        for (int i = 0; i < 10; i++) {
         }
         pw.print("\n");
         pw.print("\n");
 
         pw.print("Criteria normalized marks");
         pw.print("\n");
+        pw.print("\n");
 
-        for (int i = 0; i < 10; i++) {
+        pw.print("Criterias");
+        pw.print(",");
+        for (int i = 0; i < ACStorage.getInstance().getGoal().getListCriteria().size(); i++) {
+            pw.print(ACStorage.getInstance().getGoal().getListCriteria().get(i).getName());
+            pw.print(",");
         }
 
-
-
+        pw.print("\n");
+        for (int i = 0; i < ACStorage.getInstance().getGoal().getListCriteria().size(); i++) {
+            pw.print(ACStorage.getInstance().getGoal().getListCriteria().get(i).getName());
+            pw.print(",");
+            for (int j = 0; j < ACStorage.getInstance().getGoal().getListCriteria().size(); j++) {
+                pw.print(ACStorage.getInstance().getGoal().getCriteriaWeightInList(ACStorage.getInstance().getGoal().getListCriteria().get(j), ACStorage.getInstance().getGoal().getListCriteria().get(i)).getNormalizedMark());
+                pw.print(",");
+            }
+            pw.print("\n");
+        }
+        pw.print("\n");
+        pw.print("\n");
 
         pw.flush();
         pw.close();

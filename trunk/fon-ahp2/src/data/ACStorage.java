@@ -180,6 +180,8 @@ public class ACStorage {
                     if (!goal.getCriteriaWeights().contains(new CriteriaWeight(goal, goal.getListCriteria().get(i), goal.getListCriteria().get(j), 0, 0))) {
                         goal.getCriteriaWeights().add(new CriteriaWeight(goal, goal.getListCriteria().get(i), goal.getListCriteria().get(j), 0, 0));
                     }
+                } else {
+                    goal.getCriteriaWeights().add(new CriteriaWeight(goal, goal.getListCriteria().get(i), goal.getListCriteria().get(j), 1, 0));
                 }
             }
 
@@ -192,10 +194,13 @@ public class ACStorage {
                                 new AlternativeRanks(goal.getListCriteria().get(i), goal.getListAlternative().get(j), goal.getListAlternative().get(k), 0, 0))) {
                             goal.getListCriteria().get(i).getAllAlternativeRanks().add(new AlternativeRanks(goal.getListCriteria().get(i), goal.getListAlternative().get(j), goal.getListAlternative().get(k), 0, 0));
                         }
+                    } else {
+                        goal.getListCriteria().get(i).getAllAlternativeRanks().add(new AlternativeRanks(goal.getListCriteria().get(i), goal.getListAlternative().get(j), goal.getListAlternative().get(k), 1, 0));
                     }
                 }
             }
         }
+        
     }
 
     public void refreshProjectPreview() {
