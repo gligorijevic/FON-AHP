@@ -25,13 +25,14 @@ public class Goal {
     private List<Criteria> listCriteria;
     private List<Alternative> listAlternative;
     private List<CriteriaWeight> criteriaWeights;
-    private List<Double> criteriaPonders;
+    
+    private double[] criteriaPonders;
 
     public Goal() {
         listCriteria = new ArrayList<>();
         listAlternative = new ArrayList<>();
         criteriaWeights = new ArrayList<>();
-        criteriaPonders = new ArrayList<>();
+//        criteriaPonders = new double[ACStorage.getInstance().getGoal().getListAlternative().size()];
     }
 
     public Goal(String name, String description) {
@@ -40,7 +41,7 @@ public class Goal {
         listCriteria = new ArrayList<>();
         listAlternative = new ArrayList<>();
         criteriaWeights = new ArrayList<>();
-        criteriaPonders = new ArrayList<>();
+//        criteriaPonders = new double[ACStorage.getInstance().getGoal().getListAlternative().size()];
     }
 
     public int getId() {
@@ -223,17 +224,17 @@ public class Goal {
         this.criteriaWeights = criteriaWeights;
     }
 
-    /**
+        /**
      * @return the criteriaPonders
      */
-    public List<Double> getCriteriaPonders() {
+    public double[] getCriteriaPonders() {
         return criteriaPonders;
     }
 
     /**
      * @param criteriaPonders the criteriaPonders to set
      */
-    public void setCriteriaPonders(List<Double> criteriaPonders) {
+    public void setCriteriaPonders(double[] criteriaPonders) {
         this.criteriaPonders = criteriaPonders;
     }
 }
