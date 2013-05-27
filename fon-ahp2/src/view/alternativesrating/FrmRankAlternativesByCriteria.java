@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  * @author Ivan
  */
 public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
-
+    
     private JPanel panelAC;
     int criteriaCounter = 0;
 
@@ -196,11 +196,15 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
         JComboBox cb = (JComboBox) evt.getSource();
         cBox = (String) cb.getSelectedItem();
     }//GEN-LAST:event_cmbNormalizeActionPerformed
-
+    
     private void btnNormalizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNormalizeActionPerformed
         System.out.println(cBox);
         try {
             ControllerAlternativeRanks.getInstance().normalize(cBox, ACStorage.getInstance().getGoal().getListCriteria().get(criteriaCounter));
+            TblModelNormalizedAlternatives tblModelNormalizedAlternatives = new TblModelNormalizedAlternatives(
+                    ACStorage.getInstance().getGoal().getListCriteria().get(criteriaCounter));
+            ((PnlAlternativeMarks) pnlTable).getTblAlternativeMarks().setModel(tblModelNormalizedAlternatives);
+            slderMarkAlternatives.setEnabled(false);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
@@ -234,7 +238,7 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
 //            }
 
     }//GEN-LAST:event_btnNormalizeActionPerformed
-
+    
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         ++criteriaCounter;
         if (ACStorage.getInstance().getGoal().getListCriteria().size() > criteriaCounter) {
@@ -242,9 +246,12 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
                     ACStorage.getInstance().getGoal().getListCriteria().get(criteriaCounter));
             ((PnlAlternativeMarks) pnlTable).getTblAlternativeMarks().setModel(tblModelAlternatives);
         }
+        if(!slderMarkAlternatives.isEnabled()){
+            slderMarkAlternatives.setEnabled(true);
+        }
         checkButtons();
     }//GEN-LAST:event_btnNextActionPerformed
-
+    
     private void slderMarkAlternativesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slderMarkAlternativesStateChanged
 //        System.out.println(jSlider1.getValue());
 //        try {
@@ -259,10 +266,10 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
 //            Logger.getLogger(FrmRankAlternativesByCriteria.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }//GEN-LAST:event_slderMarkAlternativesStateChanged
-
+    
     private void slderMarkAlternativesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_slderMarkAlternativesKeyReleased
     }//GEN-LAST:event_slderMarkAlternativesKeyReleased
-
+    
     private void slderMarkAlternativesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slderMarkAlternativesMouseReleased
         System.out.println(slderMarkAlternatives.getValue());
         if (((PnlAlternativeMarks) pnlTable).getTblAlternativeMarks().getSelectedColumn() > -1
@@ -296,12 +303,12 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
                 }
             } catch (MarkNotInSatScaleException ex) {
                 Logger.getLogger(FrmRankAlternativesByCriteria.class.getName()).log(Level.SEVERE, null, ex);
-
+                
             }
         }
         slderMarkAlternatives.setValue(0);
     }//GEN-LAST:event_slderMarkAlternativesMouseReleased
-
+    
     private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
         --criteriaCounter;
         if (ACStorage.getInstance().getGoal().getListCriteria().size() > criteriaCounter) {
@@ -311,7 +318,7 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
         }
         checkButtons();
     }//GEN-LAST:event_btnPreviousActionPerformed
-
+    
     private void btnAverageValuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAverageValuesActionPerformed
 //        JPanelAverageValues.setEnabled(true);
 //        JPanelAverageValues.initComponents();
@@ -390,12 +397,12 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
         repaint();
         pack();
     }
-
+    
     public void setActivePanel(JPanel noviPanel) {
         if (pnlTable != null) {
             this.remove(pnlTable);
         }
-
+        
         pnlTable = noviPanel;
         getContentPane().add(pnlTable, java.awt.BorderLayout.CENTER);
         pnlTable.setVisible(true);
@@ -403,7 +410,7 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
         repaint();
         pack();
     }
-
+    
     private void checkButtons() {
         if (criteriaCounter == ACStorage.getInstance().getGoal().getListCriteria().size() - 1) {
             btnNext.setEnabled(false);

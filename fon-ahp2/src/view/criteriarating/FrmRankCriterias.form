@@ -103,6 +103,9 @@
             <Property name="text" type="java.lang.String" value="Normalize"/>
             <Property name="alignmentX" type="float" value="5.0"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNormalizeActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblChooseNormalization">
           <Properties>
@@ -122,10 +125,10 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="L1 Normalization"/>
-                <StringItem index="1" value="L2 Normalization"/>
-                <StringItem index="2" value="Infinity Normalization"/>
-                <StringItem index="3" value="Best-worst Normalization"/>
+                <StringItem index="0" value="L1Normalization"/>
+                <StringItem index="1" value="L2Normalization"/>
+                <StringItem index="2" value="LInfinityNormalization"/>
+                <StringItem index="3" value="BestWorstNormalization"/>
               </StringArray>
             </Property>
           </Properties>

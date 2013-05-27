@@ -4,11 +4,14 @@
  */
 package view.criteriarating;
 
+import controller.criteria.weights.ControllerCriteriaWeights;
 import data.ACStorage;
 import exception.MarkNotInSatScaleException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.plaf.SliderUI;
 import javax.swing.table.TableModel;
 
 /**
@@ -16,7 +19,7 @@ import javax.swing.table.TableModel;
  * @author Ivan
  */
 public class FrmRankCriterias extends javax.swing.JDialog {
-
+    
     private JPanel panelCA;
 
     /**
@@ -66,13 +69,18 @@ public class FrmRankCriterias extends javax.swing.JDialog {
 
         btnNormalize.setText("Normalize");
         btnNormalize.setAlignmentX(5.0F);
+        btnNormalize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNormalizeActionPerformed(evt);
+            }
+        });
 
         lblChooseNormalization.setText("Choose type of normalization for criteria weights:");
         lblChooseNormalization.setMaximumSize(new java.awt.Dimension(247, 14));
         lblChooseNormalization.setMinimumSize(new java.awt.Dimension(247, 14));
         lblChooseNormalization.setPreferredSize(new java.awt.Dimension(247, 14));
 
-        cmbNormalize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "L1 Normalization", "L2 Normalization", "Infinity Normalization", "Best-worst Normalization" }));
+        cmbNormalize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "L1Normalization", "L2Normalization", "LInfinityNormalization", "BestWorstNormalization" }));
 
         javax.swing.GroupLayout pnlOptionsLayout = new javax.swing.GroupLayout(pnlOptions);
         pnlOptions.setLayout(pnlOptionsLayout);
@@ -146,7 +154,7 @@ public class FrmRankCriterias extends javax.swing.JDialog {
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCalculateActionPerformed
-
+    
     private void slderWeightCriteriasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slderWeightCriteriasStateChanged
 //        try {
 //            TblModelCriterias tblModel = (TblModelCriterias) ((PnlCriteriasMarks) pnlTable).getTblCriteriasMarks().getModel();
@@ -161,7 +169,7 @@ public class FrmRankCriterias extends javax.swing.JDialog {
 //            Logger.getLogger(FrmRankCriterias.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }//GEN-LAST:event_slderWeightCriteriasStateChanged
-
+    
     private void slderWeightCriteriasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slderWeightCriteriasMouseReleased
         if (((PnlCriteriasMarks) pnlTable).getTblCriteriasMarks().getSelectedColumn() > -1
                 && ((PnlCriteriasMarks) pnlTable).getTblCriteriasMarks().getSelectedRow() > -1) {
@@ -197,6 +205,19 @@ public class FrmRankCriterias extends javax.swing.JDialog {
         }
         slderWeightCriterias.setValue(0);
     }//GEN-LAST:event_slderWeightCriteriasMouseReleased
+    
+    private void btnNormalizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNormalizeActionPerformed
+        cBox = (String) cmbNormalize.getSelectedItem();
+        try {
+            ControllerCriteriaWeights.getInstance().normalize(cBox, ACStorage.getInstance().getGoal());
+            TblModelNormalizedCriterias tblModelNormalizedCriterias = new TblModelNormalizedCriterias(
+                    ACStorage.getInstance().getGoal());
+            ((PnlCriteriasMarks) pnlTable).getTblCriteriasMarks().setModel(tblModelNormalizedCriterias);
+            slderWeightCriterias.setEnabled(false);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnNormalizeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,12 +287,12 @@ public class FrmRankCriterias extends javax.swing.JDialog {
         repaint();
         pack();
     }
-
+    
     public void setActivePanel(JPanel noviPanel) {
         if (pnlTable != null) {
             this.remove(pnlTable);
         }
-
+        
         pnlTable = noviPanel;
         getContentPane().add(pnlTable, java.awt.BorderLayout.CENTER);
         pnlTable.setVisible(true);
