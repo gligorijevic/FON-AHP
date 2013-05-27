@@ -177,14 +177,18 @@ public class ACStorage {
         for (int i = 0; i < goal.getListCriteria().size(); i++) {
             for (int j = 0; j < goal.getListCriteria().size(); j++) {
                 if (!goal.getListCriteria().get(i).equals(goal.getListCriteria().get(j))) {
-                    if (!goal.getCriteriaWeights().contains(new CriteriaWeight(goal, goal.getListCriteria().get(i), goal.getListCriteria().get(j), 0, 0))) {
-                        goal.getCriteriaWeights().add(new CriteriaWeight(goal, goal.getListCriteria().get(i), goal.getListCriteria().get(j), 0, 0));
+                    if (!goal.getCriteriaWeights().contains(
+                            new CriteriaWeight(goal, goal.getListCriteria().get(i), goal.getListCriteria().get(j), 0, 0))) {
+                        goal.getCriteriaWeights().add(
+                                new CriteriaWeight(goal, goal.getListCriteria().get(i), goal.getListCriteria().get(j), 0, 0));
                     }
                 } else {
-                    goal.getCriteriaWeights().add(new CriteriaWeight(goal, goal.getListCriteria().get(i), goal.getListCriteria().get(j), 1, 0));
+                    if (!goal.getCriteriaWeights().contains(new CriteriaWeight(goal, goal.getListCriteria().get(i), goal.getListCriteria().get(j), 1, 0))) {
+                        goal.getCriteriaWeights().add(
+                                new CriteriaWeight(goal, goal.getListCriteria().get(i), goal.getListCriteria().get(j), 1, 0));
+                    }
                 }
             }
-
         }
         for (int i = 0; i < goal.getListCriteria().size(); i++) {
             for (int j = 0; j < goal.getListAlternative().size(); j++) {
@@ -192,15 +196,20 @@ public class ACStorage {
                     if (!goal.getListAlternative().get(j).equals(goal.getListAlternative().get(k))) {
                         if (!goal.getListCriteria().get(i).getAllAlternativeRanks().contains(
                                 new AlternativeRanks(goal.getListCriteria().get(i), goal.getListAlternative().get(j), goal.getListAlternative().get(k), 0, 0))) {
-                            goal.getListCriteria().get(i).getAllAlternativeRanks().add(new AlternativeRanks(goal.getListCriteria().get(i), goal.getListAlternative().get(j), goal.getListAlternative().get(k), 0, 0));
+                            goal.getListCriteria().get(i).getAllAlternativeRanks().add(
+                                    new AlternativeRanks(goal.getListCriteria().get(i), goal.getListAlternative().get(j), goal.getListAlternative().get(k), 0, 0));
                         }
                     } else {
-                        goal.getListCriteria().get(i).getAllAlternativeRanks().add(new AlternativeRanks(goal.getListCriteria().get(i), goal.getListAlternative().get(j), goal.getListAlternative().get(k), 1, 0));
+                        if (!goal.getListCriteria().get(i).getAllAlternativeRanks().contains(
+                                new AlternativeRanks(goal.getListCriteria().get(i), goal.getListAlternative().get(j), goal.getListAlternative().get(k), 1, 0))) {
+                            goal.getListCriteria().get(i).getAllAlternativeRanks().add(
+                                    new AlternativeRanks(goal.getListCriteria().get(i), goal.getListAlternative().get(j), goal.getListAlternative().get(k), 1, 0));
+                        }
                     }
                 }
             }
         }
-        
+//        System.out.println("VELICINA: " + goal.getListCriteria().get(0).getAllAlternativeRanks().size());
     }
 
     public void refreshProjectPreview() {
@@ -211,7 +220,7 @@ public class ACStorage {
         }
         DefaultTreeModel dtm = new DefaultTreeModel(project);
         glavnaForma.getTreeViewProject().setModel(dtm);
-        
+
         StringBuilder txtArea = new StringBuilder();
         for (int i = 0; i < goal.getListAlternative().size(); i++) {
             txtArea.append(goal.getListAlternative().get(i).getName()).append(" - ").append(goal.getListAlternative().get(i).getDescription()).append("\n");

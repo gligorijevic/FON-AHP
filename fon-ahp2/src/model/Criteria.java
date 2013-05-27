@@ -138,7 +138,7 @@ public class Criteria {
                         }
                     }
                 }
-                ACStorage.getInstance().refreshData();
+//                ACStorage.getInstance().refreshData();
             } else {
                 throw new MarkNotInSatScaleException("Mark is not in Sati's scale!");
             }
@@ -154,7 +154,7 @@ public class Criteria {
                         }
                     }
                 }
-                ACStorage.getInstance().refreshData();
+//                ACStorage.getInstance().refreshData();
             } else {
                 throw new MarkNotInSatScaleException("Mark is not in Sati's scale!");
             }
