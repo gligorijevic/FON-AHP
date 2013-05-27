@@ -19,13 +19,13 @@ public class MyRenderer extends DefaultTableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         if (column == 0) {
-            c.setBackground(Color.CYAN);
+            c.setBackground(Color.lightGray);
         } else if (column == row + 1) {
             c.setBackground(Color.lightGray);
         } else {
-            c.setBackground(Color.yellow);
+            c.setBackground(Color.white);
         }
-        table.getTableHeader().setBackground(Color.CYAN);
+        table.getTableHeader().setBackground(Color.lightGray);
         return c;
     }
 }

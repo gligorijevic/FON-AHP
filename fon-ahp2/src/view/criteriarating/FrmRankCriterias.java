@@ -300,4 +300,6 @@ public class FrmRankCriterias extends javax.swing.JDialog {
         repaint();
         pack();
     }
+    
+    
 }
