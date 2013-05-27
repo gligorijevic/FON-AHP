@@ -22,13 +22,15 @@ public class Criteria {
     private String name;
     private String description;
     private List<AlternativeRanks> allAlternativeRanks;
+    
     @Deprecated
     private Map marks;
     @Deprecated
     private Map normalizedMarks;
     @Deprecated
     private Map altermativeGrades;
-    private List<Double> averageValues;
+   
+    private double[] averageValues;
 
     public Criteria() {
         marks = new HashMap();
@@ -40,13 +42,14 @@ public class Criteria {
     public Criteria(String name, String description) {
         this.name = name;
         this.description = description;
-        averageValues = new LinkedList<Double>();
+ //        averageValues = new double [ACStorage.getInstance().getGoal().getListAlternative().size()];
 
         marks = new HashMap();
         normalizedMarks = new HashMap();
         altermativeGrades = new HashMap();
+        
         allAlternativeRanks = new ArrayList<>();
-        averageValues = new ArrayList<>();
+        
     }
 
     /**
@@ -194,16 +197,16 @@ public class Criteria {
     }
 
     /**
-     * @return the averageValues
+     * @return the criteriaPonders
      */
-    public List<Double> getAverageValue() {
+    public double[] getAverageValues() {
         return averageValues;
     }
 
     /**
-     * @param averageValues the averageValues to set
+     * @param criteriaPonders the criteriaPonders to set
      */
-    public void setAverageValues(List<Double> averageValues) {
+    public void setAverageValues(double[] averageValues) {
         this.averageValues = averageValues;
     }
 }

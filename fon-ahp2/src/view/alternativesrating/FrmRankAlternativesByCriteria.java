@@ -321,11 +321,8 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPreviousActionPerformed
     
     private void btnAverageValuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAverageValuesActionPerformed
-//        JPanelAverageValues.setEnabled(true);
-//        JPanelAverageValues.initComponents();
-//        jTableAverageValues.setDefaultRenderer(Object.class, new MyRenderer());
-//        Ideja je da se klikom na dugme Average Values aktivira JPanelAverageValues na kome se nalazi tabela 
-//        koja nasledjuje TabelModelAverageValues
+        TblModelAverageValues tbAver  = new TblModelAverageValues(ACStorage.getInstance().getGoal().getListCriteria().get(criteriaCounter));
+        ((PnlAlternativeMarks) pnlTable).getTblAlternativeMarks().setModel(tbAver);
     }//GEN-LAST:event_btnAverageValuesActionPerformed
 
     /**
