@@ -129,8 +129,12 @@ public class FrmAddGoal extends javax.swing.JDialog {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         Goal g = new Goal(jTextFieldName.getText(), jTextAreaDescription.getText());
+        if(ACStorage.getInstance().getGoal()==null){
         ACStorage.getInstance().setGoal(g);
-        JOptionPane.showMessageDialog(this, "The alternative has been successfully added");
+        JOptionPane.showMessageDialog(this, "The goal has been successfully added");
+        }else{
+            JOptionPane.showMessageDialog(this, "Goal is already set.");
+        }
         jTextFieldName.setText(null);
         jTextAreaDescription.setText(null);
     }//GEN-LAST:event_jButtonAddActionPerformed
