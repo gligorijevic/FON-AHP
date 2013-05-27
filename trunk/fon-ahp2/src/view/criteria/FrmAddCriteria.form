@@ -34,9 +34,8 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       <Component id="BtnAdd" min="-2" pref="75" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       <Component id="BtnFinish" min="-2" pref="75" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jTxtfName" min="-2" pref="237" max="-2" attributes="0"/>
