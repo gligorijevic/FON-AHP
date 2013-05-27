@@ -21,7 +21,7 @@ public class TblModelFinalResults extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return goal.getListAlternative().size();
+        return goal.getListAlternative().size() + 1;
     }
 
     @Override
@@ -41,12 +41,24 @@ public class TblModelFinalResults extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         if (columnIndex == 0) {
-            return goal.getListAlternative().get(rowIndex);
-        } else {
-            if (goal.getListCriteria().get(columnIndex - 1).getAverageValue().size() > 0) {
-                return goal.getListCriteria().get(columnIndex - 1).getAverageValue().get(rowIndex);
+            if (rowIndex == goal.getListAlternative().size()) {
+                return "Criteria ponders";
             } else {
-                return 0;
+                return goal.getListAlternative().get(rowIndex);
+            }
+        } else {
+            if (rowIndex == goal.getListAlternative().size()) {
+                if (goal.getCriteriaPonders().size() > 0) {
+                    return goal.getCriteriaPonders().get(columnIndex);
+                } else {
+                    return 0;
+                }
+            } else {
+                if (goal.getListCriteria().get(columnIndex - 1).getAverageValue().size() > 0) {
+                    return goal.getListCriteria().get(columnIndex - 1).getAverageValue().get(rowIndex);
+                } else {
+                    return 0;
+                }
             }
         }
     }

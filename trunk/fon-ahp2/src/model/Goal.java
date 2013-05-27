@@ -26,11 +26,12 @@ public class Goal {
     private List<Alternative> listAlternative;
     private List<CriteriaWeight> criteriaWeights;
     private List<Double> criteriaPonders;
-    
+
     public Goal() {
         listCriteria = new ArrayList<>();
         listAlternative = new ArrayList<>();
         criteriaWeights = new ArrayList<>();
+        criteriaPonders = new ArrayList<>();
     }
 
     public Goal(String name, String description) {
@@ -39,6 +40,7 @@ public class Goal {
         listCriteria = new ArrayList<>();
         listAlternative = new ArrayList<>();
         criteriaWeights = new ArrayList<>();
+        criteriaPonders = new ArrayList<>();
     }
 
     public int getId() {
@@ -234,6 +236,4 @@ public class Goal {
     public void setCriteriaPonders(List<Double> criteriaPonders) {
         this.criteriaPonders = criteriaPonders;
     }
-    
-    
 }

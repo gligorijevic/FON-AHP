@@ -205,6 +205,7 @@ public class FrmRankAlternativesByCriteria extends javax.swing.JDialog {
                     ACStorage.getInstance().getGoal().getListCriteria().get(criteriaCounter));
             ((PnlAlternativeMarks) pnlTable).getTblAlternativeMarks().setModel(tblModelNormalizedAlternatives);
             slderMarkAlternatives.setEnabled(false);
+            btnNormalize.setEnabled(false);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
