@@ -39,7 +39,10 @@ public class Start {
         ACStorage.getInstance().setGoal(g);
         ACStorage.getInstance().refreshData();
 
+
         FrmMain frmMain = new FrmMain();
+        ACStorage.getInstance().setGlavnaForma(frmMain);
+        ACStorage.getInstance().refreshProjectPreview();
         frmMain.setVisible(true);
     }
 }
