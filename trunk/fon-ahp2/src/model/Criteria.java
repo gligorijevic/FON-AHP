@@ -42,7 +42,7 @@ public class Criteria {
     public Criteria(String name, String description) {
         this.name = name;
         this.description = description;
- //        averageValues = new double [ACStorage.getInstance().getGoal().getListAlternative().size()];
+        averageValues = new double [ACStorage.getInstance().getGoal().getListAlternative().size()];
 
         marks = new HashMap();
         normalizedMarks = new HashMap();
