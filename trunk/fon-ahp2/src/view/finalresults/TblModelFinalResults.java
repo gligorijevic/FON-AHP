@@ -48,14 +48,14 @@ public class TblModelFinalResults extends AbstractTableModel {
             }
         } else {
             if (rowIndex == goal.getListAlternative().size()) {
-                if (goal.getCriteriaPonders().size() > 0) {
-                    return goal.getCriteriaPonders().get(columnIndex);
+                if (goal.getCriteriaPonders().length > 0) {
+                    return goal.getCriteriaPonders()[columnIndex];
                 } else {
                     return 0;
                 }
             } else {
-                if (goal.getListCriteria().get(columnIndex - 1).getAverageValue().size() > 0) {
-                    return goal.getListCriteria().get(columnIndex - 1).getAverageValue().get(rowIndex);
+                if (goal.getListCriteria().get(columnIndex - 1).getAverageValues().length > 0) {
+                    return goal.getListCriteria().get(columnIndex - 1).getAverageValues()[rowIndex];
                 } else {
                     return 0;
                 }
