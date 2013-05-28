@@ -55,13 +55,19 @@ public class FrmFinalResults extends javax.swing.JDialog {
 
     private void btnCalculateFinalResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateFinalResultsActionPerformed
         //TODO izracnati konacne vrednosti:
-        
+        for(int i = 0; i < ACStorage.getInstance().getGoal().getListAlternative().size(); i++){
+            double mark = 0;
+            for (int j = 0; j < ACStorage.getInstance().getGoal().getListCriteria().size(); j++){
+                mark = mark + (ACStorage.getInstance().getGoal().getListCriteria().get(j).getAverageValues()[i] * ACStorage.getInstance().getGoal().getCriteriaPonders()[j]);
+            }
+            ACStorage.getInstance().getGoal().getListAlternative().get(i).setMark(mark);
+        }
         StringBuilder sb = new StringBuilder();
-        
+
         for (int i = 0; i < ACStorage.getInstance().getGoal().getListAlternative().size(); i++) {
             sb.append(ACStorage.getInstance().getGoal().getListAlternative().get(i).getName()).append(" has been weighted with: ").append(ACStorage.getInstance().getGoal().getListAlternative().get(i).getMark()).append("\n");
         }
-        
+
         PnlFinalResultsPreview pfrp = new PnlFinalResultsPreview();
         pfrp.getLblResultsPreview().setText(sb.toString());
     }//GEN-LAST:event_btnCalculateFinalResultsActionPerformed
@@ -116,7 +122,7 @@ public class FrmFinalResults extends javax.swing.JDialog {
         if (pnlFinalResults != null) {
             this.remove(pnlFinalResults);
         }
-        
+
         pnlFinalResults = noviPanel;
         getContentPane().add(pnlFinalResults, java.awt.BorderLayout.CENTER);
         pnlFinalResults.setVisible(true);
